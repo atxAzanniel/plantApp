@@ -1,0 +1,12 @@
+{
+  "name": "plantApp",
+  "displayName": "plantApp",
+  "expo": {
+    "name": "plantApp",
+    "slug": "plantApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
