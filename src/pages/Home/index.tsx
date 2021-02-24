@@ -1,6 +1,7 @@
 import React from 'react'
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
+import { useNavigation } from '@react-navigation/native'
 import {
   View, Text, TouchableOpacity, Image,
   TextInput, FlatList, ScrollView
@@ -12,31 +13,46 @@ import imageProfile from '../../assets/g.png'
 import { plants, plantsRecommeded, IPlant } from '../../mock/plants'
 
 const Home: React.FC = () => {
+  const navigation = useNavigation()
+
   const _renderPlantsRecommended = ({ item }: { item: IPlant }) => {
     return (
-      <TouchableOpacity
-        key={item.id}
-        style={styles.plant_button}
-      >
-        <Image
-          style={styles.plant_image}
-          source={item.source}
+      <View key={item.id}>
+        <LinearGradient
+          colors={['rgba(0,164,109,0.09)', 'transparent']}
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            height: 100,
+            marginTop: 200,
+            top: 0
+          }}
         />
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Detail', { plant: item })}
+          style={styles.plant_button}
+        >
+          <Image
+            style={styles.plant_image}
+            source={item.source}
+          />
 
-        <View style={styles.plant_description_area}>
-          <Text style={styles.plant_name}>
-            {item.name}
-          </Text>
+          <View style={styles.plant_description_area}>
+            <Text style={styles.plant_name}>
+              {item.name}
+            </Text>
 
-          <Text style={styles.plant_price}>
-            R${String(item.price.toFixed(2)).replace('.', ',')}
-          </Text>
-        </View>
+            <Text style={styles.plant_price}>
+              R$ {String(item.price.toFixed(2)).replace('.', ',')}
+            </Text>
+          </View>
 
-        <Text style={styles.plant_country}>
-          BRASIL
+          <Text style={styles.plant_country}>
+            BRASIL
         </Text>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
     )
   }
 
@@ -44,6 +60,7 @@ const Home: React.FC = () => {
     return (
       <TouchableOpacity
         key={item.id}
+        onPress={() => navigation.navigate('Detail', { plant: item })}
         style={[styles.plant_button, { width: 300 }]}
       >
         <Image
@@ -57,7 +74,7 @@ const Home: React.FC = () => {
           </Text>
 
           <Text style={styles.plant_price}>
-            R${String(item.price.toFixed(2)).replace('.', ',')}
+            R$ {String(item.price.toFixed(2)).replace('.', ',')}
           </Text>
         </View>
 
@@ -71,6 +88,7 @@ const Home: React.FC = () => {
   return (
     <View style={styles.container}>
       <ScrollView
+        showsVerticalScrollIndicator={false}
         style={{
           marginBottom: 10
         }}
@@ -114,7 +132,9 @@ const Home: React.FC = () => {
               style={styles.search}
             />
 
-            <MaterialIcons name="search" color="#ddd" size={38} />
+            <TouchableOpacity>
+              <MaterialIcons name="search" color="#ddd" size={38} />
+            </TouchableOpacity>
           </View>
         </LinearGradient>
 

@@ -16,6 +16,7 @@ const BottomTabNavigatior: React.FC = () => {
       tabBarOptions={{
         activeTintColor: '#008f6e',
         inactiveTintColor: '#ccc',
+        keyboardHidesTabBar: true,
         style: {
           height: 65,
           justifyContent: 'center',
