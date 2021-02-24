@@ -1,19 +1,15 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, Image, TextInput, FlatList, ImageSourcePropType, ScrollView } from 'react-native'
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
+import {
+  View, Text, TouchableOpacity, Image,
+  TextInput, FlatList, ScrollView
+} from 'react-native'
 
 import styles from './styles'
 
 import imageProfile from '../../assets/g.png'
-import platsRecommed from '../../mock/plants_recommed'
-import plants from '../../mock/plants'
-interface IPlant {
-  id: string;
-  name: string;
-  price: number;
-  source: ImageSourcePropType;
-}
+import { plants, plantsRecommeded, IPlant } from '../../mock/plants'
 
 const Home: React.FC = () => {
   const _renderPlantsRecommended = ({ item }: { item: IPlant }) => {
@@ -139,7 +135,7 @@ const Home: React.FC = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           style={{ height: 300 }}
-          data={platsRecommed}
+          data={plantsRecommeded}
           keyExtractor={item => item.id}
           renderItem={_renderPlantsRecommended}
         />
