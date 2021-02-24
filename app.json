@@ -1,9 +1,9 @@
 {
-  "name": "plantApp",
-  "displayName": "plantApp",
+  "name": "PlantApp",
+  "displayName": "PlantApp",
   "expo": {
-    "name": "plantApp",
-    "slug": "plantApp",
+    "name": "PlantApp",
+    "slug": "PlantApp",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
